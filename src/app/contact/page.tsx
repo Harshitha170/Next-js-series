@@ -1,6 +1,8 @@
 import { getSession } from "@/app/_lib/session";
 import { createContact, getContacts } from "@/app/api/contact";
-import ContactList from "../_components/ContactList";
+import ContactList from "@/app/_components/ContactList";
+
+export const dynamic = "force-dynamic";
 
 const ContactPage = async () => {
     const user = await getSession();
@@ -14,7 +16,7 @@ const ContactPage = async () => {
         );
     }
 
-    const contacts = await getContacts(user?.id);
+    const contacts = await getContacts(user.id);
     console.log("contacts list : ", contacts);
     
     if(!contacts || contacts.length === 0){
